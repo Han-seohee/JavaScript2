@@ -253,3 +253,38 @@ for (let key in doggy) {
         sound: 멍멍
         age: 2
 ```
+
+---
+### :star2:반복문 continue, break
+반복문에서 벗어나거나 그 다음 루프를 돌게 할 수 있다.
+
+>countinue
+
+```
+for (let i = 0; i < 10; i ++) {
+ if (i === 2) continue;     // 특정 조건이 만족됐을 때 그 다음 루프 실행
+ console.log(i);     // 스킵됨
+}
+
+// 값 : 0
+        1
+        3
+        4
+        ...
+        9
+```
+
+>break
+
+```
+for (let i = 0; i < 10; i ++) {
+ if (i === 2) continue;
+ console.log(i);
+ if (i === 5) break;     // 반복문이 끝남
+
+// 값 : 0
+        1
+        3
+        4
+        5
+```
