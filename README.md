@@ -288,3 +288,66 @@ for (let i = 0; i < 10; i ++) {
         4
         5
 ```
+
+---
+### :star2:배열 내장함수
+
+```
+const superheroes = ['아이언맨', '캡틴 아메리카', '토르', '닥터 스트레인지'];
+
+for (let i = 0; 1 < superheroes.length; i++) {
+ console.log(superheroes[i]);
+}
+
+// 값 : 아이언맨
+        캡틴 아메리카
+        토르
+        닥터 스트레인지
+```
+
+:point_down: forEach
+
+```
+const superheroes = ['아이언맨', '캡틴 아메리카', '토르', '닥터 스트레인지'];
+
+function print(hero) {
+ console.log(hero);
+}
+
+superheroes.forEach(print)
+
+// 값 : 아이언맨
+        캡틴 아메리카
+        토르
+        닥터 스트레인지
+```
+
+:point_down: 짧은 코드로
+
+```
+const superheroes = ['아이언맨', '캡틴 아메리카', '토르', '닥터 스트레인지'];
+
+superheroes.forEach(function(hero) {
+ console.log(hero);
+});
+
+// 값 : 아이언맨
+        캡틴 아메리카
+        토르
+        닥터 스트레인지
+```
+
+:point_down: 화살표 함수로 
+
+```
+const superheroes = ['아이언맨', '캡틴 아메리카', '토르', '닥터 스트레인지'];
+
+superheroes.forEach(hero => {
+ console.log(hero);
+});
+
+// 값 : 아이언맨
+        캡틴 아메리카
+        토르
+        닥터 스트레인지
+```
