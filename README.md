@@ -94,3 +94,162 @@ console.log(array[2])
 console.log(array[3])
 console.log(array[4])
 ```
+
+---
+### :star2:반복문 for
+
+>for
+
+```
+for (let i = 0; i < 10; i++) {
+ console.log(i);
+}
+
+// 값 : 0
+        1
+        2
+        ...
+        9
+```
+
+```
+for (let i = 10; i > 0; i--) {
+ console.log(i);
+}
+
+// 값 : 10
+        9
+        8
+        7
+        ...
+        1
+```
+
+```
+for (let i = 10; i >= 0; i-=2) {
+ console.log(i);
+}
+
+// 값 : 10
+        8
+        6
+        ...
+        0
+```
+
+>for문과 배열
+
+```
+const names = ['멍멍이', '야옹이', '멍뭉이'];
+
+for (let i= 0; i < names.length; i++) {
+ console.log(names[i]);
+}
+
+// 값 : 멍멍이
+        야옹이
+        멍뭉이
+```
+
+---
+### :star2:반복문 while
+
+```
+let i = 0;
+
+while(i < 10) {
+ console.log(i);
+ i++;
+}
+```
+
+```
+let i = 0;
+let isFun = false;
+
+while (isFun === false) {
+ console.log(i);
+ i++;
+ if (i === 30) {
+  isFun = true;
+ }
+}
+
+// 값 : 0
+        1
+        ...
+        29
+```
+
+```
+let i = 0;
+let isFun = false;
+
+while (!isFun) {
+ console.log(i);
+ i++;
+ if (i === 30) {
+  isFun = true;
+ }
+}
+
+// 값 : 0
+        1
+        ...
+        29
+```
+
+---
+### :star2:반복문 for...of, for...in
+
+>for...of - 배열 안에 있는것들을 사용해서 어떠한 작업을 할 때
+
+```
+const numbers = [10, 20, 30, 40, 50];
+
+for (let number of numbers) {
+ console.log(numbers);
+}
+
+// 값 : 10
+        20
+        ...
+        50
+```
+>객체의 정보를 받아올수 있는 몇가지 방법
+
+```
+const numbers = [10, 20, 30, 40, 50];
+
+const doggy = {
+ name: '멍멍이',
+ sound: '멍멍',
+ age: 2
+};
+
+console.log(Object.entries(doggy));
+console.log(Object.keys(doggy));
+console.log(Object.values(doggy));
+
+// 값 : (key+value)
+        ["name", "sound", "age"]
+        ["멍멍이", "멍멍", 2] 
+```
+
+>for...in - 객체에 대한 반복적인 작업을 처리할 때 
+
+```
+const doggy = {
+ name: '멍멍이',
+ sound: '멍멍',
+ age: 2
+};
+
+for (let key in doggy) {
+ console.log(`${key}; ${doggy}`);
+}
+
+// 값 : name: 멍멍이
+        sound: 멍멍
+        age: 2
+```
