@@ -506,3 +506,84 @@ console.log(todo);
 
 // 값 : Object {id: 4, text: "배열 내장함수 배우기", done: false}
 ```
+
+---
+
+### :star2:배열 내장함수 filter
+
+특정 조건을 만족하는 원소를 찾아서 새로운 배열을 만드는 것
+
+```
+const todos = [
+ {
+   id: 1,
+   text: '자바스크립트 입문',
+   done: true,
+ },
+ {
+   id: 2,
+   text: '함수 배우기',
+   done: true,
+ },
+ {
+   id: 3,
+   text: '객체와 배열 배우기',
+   done: true,
+ },
+ {
+   id: 4,
+   text: '배열 내장함수 배우기',
+   done: false,
+ }
+]
+
+const tasksNotDone = todos.filter(todo => todo.done === false);
+// 간단히 const tasksNotDone = todos.filter(todo => !todo.done);
+console.log(taskNotDone);
+
+// 값 : [Object]
+         0: Object
+          id: 4
+          text: "배열 내장함수 배우기"
+          done: false
+```
+
+```
+const todos = [
+ {
+   id: 1,
+   text: '자바스크립트 입문',
+   done: true,
+ },
+ {
+   id: 2,
+   text: '함수 배우기',
+   done: true,
+ },
+ {
+   id: 3,
+   text: '객체와 배열 배우기',
+   done: true,
+ },
+ {
+   id: 4,
+   text: '배열 내장함수 배우기',
+   done: false,
+ }
+]
+
+const tasksNotDone = todos.filter(todo => todo.done === true);
+// 간단히 const tasksNotDone = todos.filter(todo => todo.done);
+console.log(taskNotDone);
+
+// 값 : [Object, Object, Object]
+         0: Object
+          id: 1
+          text: "배열 내장함수 배우기"
+          done: true
+         1: Object
+          id: 2
+          text: "함수 배우기"
+          done: true
+         ...(done값이 true인것만)
+```
