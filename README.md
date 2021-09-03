@@ -738,3 +738,68 @@ console.log(array.join(', '));
          1 2 3 4 5
          1, 2, 3, 4, 5
 ```
+
+---
+
+### :star2:배열 내장함수 reduce
+
+```
+const numbers = [1, 2, 3, 4, 5];
+
+let sum = 0;
+numbers.forEach(n => {
+  sum += n;
+});
+
+console.log(sum);
+
+// 값 : 15
+```
+>배열의 합 구하기
+
+<img src="https://user-images.githubusercontent.com/86407453/132000667-d8bfb9fa-1730-4926-aaf1-050b1fa234b3.png">
+
+```
+const numbers = [1, 2, 3, 4, 5];
+
+const sum = numbers.reduce((accumulator, current) => accumulator + current, 0);
+console.log(sum);
+
+// 값 : 15
+```
+
+>배열의 평균 구하기
+
+```
+const numbers = [1, 2, 3, 4, 5];
+
+const avg = numbers.reduce((accumulator, current, index, array) => {
+ if (index === array.length - 1) {
+  return (accumulator + current) / array.length;
+ }
+ return accumulator + current;
+}, 0);
+console.log(avg);
+
+// 값 : 3
+```
+
+---
+### :star2:배열 내장함수 reduce
+>다른예시
+
+```
+const alphabets = ['a', 'a', 'a', 'b', 'c', 'c', 'd', 'e'];
+const counts = alphabets.reduce((acc, current) = > {
+ if (acc[current]) {
+  acc[current] += 1;
+ } else {
+   acc[current] = 1;
+ }
+ return acc;
+}, {})
+
+console.log(counts); 
+
+// 값 : Object {a: 3, b: 1, c: 2, d: 1, e: 1}
+```
