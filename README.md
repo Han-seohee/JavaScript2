@@ -351,3 +351,158 @@ superheroes.forEach(hero => {
         토르
         닥터 스트레인지
 ```
+
+---
+2021.09.03
+
+### :star2:배열 내장함수 map
+
+>for문
+
+```
+const array = [1, 2, 3, 4, 5, 6, 7, 8];
+
+const squared = [];
+for (let i = 0; i < array.length; i++) {
+ squared push(array[i] * array[i]);
+}
+
+console.log(squared);
+
+// 값 : [1, 4, 16, 25, 36, 49, 64]
+```
+
+>forEach문
+
+```
+const array = [1, 2, 3, 4, 5, 6, 7, 8];
+
+const squared = [];
+array.forEach(n => {
+ squared.push(n *n);
+});
+
+console.log(squared);
+
+// 값 : [1, 4, 16, 25, 36, 49, 64]
+```
+
+>map
+>>배열의 내용에 전체적으로 변환을 주고 싶을 때
+
+```
+const array = [1, 2, 3, 4, 5, 6, 7, 8];
+
+const square = n => n * n;
+const squared = array.map(square);
+
+// 값 : [1, 4, 16, 25, 36, 49, 64]
+```
+
+```
+const array = [1, 2, 3, 4, 5, 6, 7, 8];
+
+const squared = array.map(n => n * n);
+
+// 값 : [1, 4, 16, 25, 36, 49, 64]
+```
+
+>활용
+>>텍스트로만 이루어진 문자열로 바꾸기
+
+```
+const items = [
+ {
+   id: 1,
+   text: 'hello'
+ },
+ {
+   id: 2,
+   text: 'bye'
+ }
+];
+
+const texts = items.map(item => item.text);
+console.log(texts);
+
+// 값 : ["hello", "bye"]
+```
+
+#### :star:배열에서 원하는 항목이 어디에 있는지 알려주는 함수
+
+>index of
+>>특정 값과 일치하는것을 찾을 때
+
+```
+const superheroes = ['아이언맨', '캡틴 아메리카', '토르', '닥터 스트레인지'];
+const index = superheroes.indexOf('토르');
+console.log(index);
+
+// 값 : 2
+```
+
+>findIndex
+>>특정 값을 조건으로 찾아서 몇번째인지 찾기
+
+```
+const todos = [
+ {
+   id: 1,
+   text: '자바스크립트 입문',
+   done: true,
+ },
+ {
+   id: 2,
+   text: '함수 배우기',
+   done: true,
+ },
+ {
+   id: 3,
+   text: '객체와 배열 배우기',
+   done: true,
+ },
+ {
+   id: 4,
+   text: '배열 내장함수 배우기',
+   done: false,
+ }
+]
+
+const index = todos.findIndex(todo => todo.id === 3)
+console.log(index);
+
+// 값 : 2
+```
+
+>find
+>>찾은 값 자체를 반환
+
+```
+const todos = [
+ {
+   id: 1,
+   text: '자바스크립트 입문',
+   done: true,
+ },
+ {
+   id: 2,
+   text: '함수 배우기',
+   done: true,
+ },
+ {
+   id: 3,
+   text: '객체와 배열 배우기',
+   done: true,
+ },
+ {
+   id: 4,
+   text: '배열 내장함수 배우기',
+   done: false,
+ }
+]
+
+const todo = todos.find(todo => todo.done === false)
+console.log(todo);
+
+// 값 : Object {id: 4, text: "배열 내장함수 배우기", done: false}
+```
