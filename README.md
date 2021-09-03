@@ -587,3 +587,154 @@ console.log(taskNotDone);
           done: true
          ...(done값이 true인것만)
 ```
+
+---
+
+### :star2:배열 내장함수 splice와 slice
+
+>splice
+>>배열에서 특정 항목을 제거할 때 사용
+>>제거하는 과정에서 해당 원소가 몇번 째 인지 명시를 해야함 
+
+```
+const numbers = [10, 20, 30, 40];
+const index = numbers.indexOf(30);
+numbers.splice(index, 1);
+console.log(numbers);
+
+// 값 : [10, 20, 40]
+```
+
+```
+const numbers = [10, 20, 30, 40];
+const index = numbers.indexOf(30);
+const spliced = numbers.splice(index, 1);
+console.log(spliced);
+console.log(numbers);
+
+// 값 : [30]
+        [10, 20, 40]
+```
+
+```
+const numbers = [10, 20, 30, 40];
+const index = numbers.indexOf(30);
+const spliced = numbers.splice(index, 2);
+console.log(spliced);
+console.log(numbers);
+
+// 값 : [30, 40]
+        [10, 20]
+```
+
+>slice
+>>배열을 잘라낼 때 사용
+>>기존의 배열을 건들이지 않음
+
+```
+const numbers = [10, 20, 30, 40];
+
+const sliced = numbers.slice(0, 2);     //0부터 2 전까지니까 10, 20
+console.log(sliced);
+console.log(numbers);
+
+// 값 : [10, 20]
+        [10, 20, 30, 40]
+```
+
+---
+### :star2:배열 내장함수 shift, pop, unshift, push
+
+>shift
+>>기존의 배열을 수정
+>>첫번째 원소를 배열에서 추출
+
+```
+const numbers = [10, 20, 30, 40];
+
+const value = numbers.shift();
+console.log(value);
+console.log(numbers);
+
+// 값 : 10
+        [20, 30, 40]  //numbers.shift() 쓸 때마다 왼쪽부터 하나씩 빠짐
+```
+
+```
+const numbers = [10, 20, 30, 40];
+
+const value = numbers.shift();
+numbers.shift()
+numbers.shift()
+numbers.shift()
+console.log(value);
+console.log(numbers);
+
+// 값 : 10
+        []
+```
+
+>pop
+
+```
+const numbers = [10, 20, 30, 40];
+
+const value = numbers.pop();
+console.log(value);
+console.log(numbers);
+
+// 값 : 40
+        [10, 20, 30]   //numbers.pop() 쓸 때마다 오른쪽부터 하나씩 빠짐
+```
+
+>unshift
+
+```
+const numbers = [10, 20, 30, 40];
+numbers.nushift(5);
+console.log(numbers);
+
+// 값 : [5, 10, 20, 30, 40]     // 앞쪽에 5를 추가
+```
+
+>concat
+>>배열 합치기
+>>기존의 배열을 건들이지 않음
+
+```
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+
+const concated = arr1.concat(arr2);
+console.log(arr1);
+console.log(arr2);
+console.log(concated);
+
+// 값 : [1, 2, 3]
+        [4, 5, 6]
+        [1, 2, 3, 4, 5, 6]
+```
+
+```
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+
+const concated = [...arr1, ...arr2];
+console.log(concated);
+
+// 값 : [1, 2, 3, 4, 5, 6]
+```
+
+>join
+>>배열 안에 있는 값들을 문자열 형태로 합칠 때
+
+```
+const array = [1, 2, 3, 4, 5];
+console.log(array.join());
+console.log(array.join(' '));
+console.log(array.join(', '));
+
+// 값 :  1,2,3,4,5
+         1 2 3 4 5
+         1, 2, 3, 4, 5
+```
