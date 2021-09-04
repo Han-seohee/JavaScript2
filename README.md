@@ -803,3 +803,231 @@ console.log(counts);
 
 // 값 : Object {a: 3, b: 1, c: 2, d: 1, e: 1}
 ```
+
+---
+2021.09.04
+### :star2: 프로토타입과 클래스 - 객체 생성자
+
+>객체 생성자
+>>함수를 통해서 새로운 객체를 만들고 그 안에 넣고싶은 값, 함수를 구현할 수 있게 함
+
+```
+function Animal(type, name, sound) {
+ this.type = type;
+ this.name = name;
+ this.sound = sound;
+ this.say = function() {
+  console.log(this.sound);
+ }
+}
+
+const dog = new Animal('개', '멍멍이', '멍멍');
+const cat = new Animal('고양이', '야옹이', '야옹');
+
+dog.say();
+cat.say();
+
+// 값 : 멍멍
+        야옹
+```
+
+```
+function Animal(type, name, sound) {
+ this.type = type;
+ this.name = name;
+ this.sound = sound;
+}
+
+Animal.prototype.say = function() {
+ console.log(this.sound);
+}
+
+Animal.prototype.sharedValue = 1;
+
+const dog = new Animal('개', '멍멍이', '멍멍');
+const cat = new Animal('고양이', '야옹이', '야옹');
+
+dog.sharedValue
+cat.sharedValue
+
+dog.say();
+cat.say();
+
+// 값 : 멍멍
+        야옹
+```
+
+---
+### :star2: 프로토타입과 클래스 - 객체 생성자 상속하기
+
+```
+function Dog(name, sound) {
+ this.type = '개';
+ this.name = name;
+ this.sound = sound;
+}
+
+function Cat(name, sound) {
+ this.type = '야옹이';
+ this.name = name;
+ this.sound = sound;
+}
+
+Dog.prototype.say = function() {
+ console.log(this.sound);
+}
+
+Cat.prototype.say = function() {
+ console.log(this.sound);
+}
+
+const dog = new Dog('멍멍이', '멍멍');
+const cat = new Cat('야옹이', '야옹');
+
+dog.sharedValue
+cat.sharedValue
+
+dog.say();
+cat.say();
+
+// 값 : 멍멍
+        야옹
+```
+
+:point_down:
+
+```
+function Animal(type, name, sound) {
+ this.type = type;
+ this.name = name;
+ this.sound = sound;
+}
+
+Animal.prototype.say = function() {
+ console.log(this.sound);
+}
+
+function Dog(name, sound) {
+ Animal.call(this, '개', name, sound);
+}
+
+function Cat(name, sound) {
+ Animal.call(this, '야옹이', name, sound);
+}
+
+Dog.prototype = Animal.prototype;
+cot.prototype = Animal.prototype;
+
+const dog = new Dog('멍멍이', '멍멍');
+const cat = new Cat('야옹이', '야옹');
+
+dog.sharedValue
+cat.sharedValue
+
+dog.say();
+cat.say();
+
+// 값 : 멍멍
+        야옹
+```
+
+---
+### :star2: 프로토타입과 클래스 - ES6 Class
+
+```
+class Animal {
+ constructor(type, name, sound) {
+  this.type = type;
+  this.name = name;
+  this.sound = sound;
+ }
+ say() {
+  console.log(this.sound);
+ }
+}
+
+console.log(Animal.prototype.say);
+
+const dog = new Animal('개', '멍멍이', '멍멍');
+const cat = new Animal('고양이', '야옹이', '야옹');
+
+dog.say();
+cat.say();
+
+// 값 : 멍멍
+        야옹
+```
+
+:point_down:
+
+```
+class Animal {
+ constructor(type, name, sound) {
+  this.type = type;
+  this.name = name;
+  this.sound = sound;
+ }
+ say() {
+  console.log(this.sound);
+ }
+}
+
+class Dog extends Animal {
+ constructor(name, sound) {
+  super('개', name, sound);
+ }
+}
+
+class Cat extends Animal {
+ constructor(name, sound) {
+  super('고양이', name, sound);
+ }
+}
+
+const dog = new Dog('멍멍이', '멍멍');
+const cat = new Cat('야옹이', '야옹');
+const cat2 = new Cat('야오오오옹이', '야오오옹');
+
+dog.say();
+cat.say();
+cat2.say();
+
+// 값 : 멍멍
+        야옹
+        야오오옹
+```
+
+---
+### :star2: 프로토타입과 클래스 - 연습 - Food class 만들기
+
+```
+class Food {
+ constructor(name) {
+  this.name = name;
+  this.brands = [];
+ }
+ addBrand(brand) {
+  this.brands.push(brand)
+ }
+ print() {
+  console.log(`${this.name}을/를 파는 음식점들:`)
+  console.log(this.brands.join(', '));
+ }
+}
+
+const pizza = new Food('피자');
+pizza.addBrand('피자헛');
+pizza.addBrand('도미노 피자');
+
+const chicken = new Food('치킨');
+chicken.addBrand('굽네치킨');
+chicken.addBrand('BBQ');
+
+pizza.print()
+chicken.print();
+
+// 값 :  피자을/를 파는 음식점들:
+         피자헛, 도미노 피자
+         치킨을/를 파는 음식점들:
+         굽네치킨, BBQ
+```
